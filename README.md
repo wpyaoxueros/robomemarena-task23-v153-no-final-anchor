@@ -17,8 +17,8 @@
 - 评分固定到 RoboMemArena `62214036103ee8d5fef9b475dd8b344b6e2cfc03`。
 - `Close Microwave` 是审计项；Task23 的成功按最新远端必需 stage 全完成判定。
 
-运行结果和视频会在本次 episode 结束后登记到 `history/RESULT.md`。不要根据
-仓库名推断成功或失败，必须以该文件、`summary.tsv` 和视频为准。
+有效重跑已在 seed105 完成全部三个远端 stage。运行结果、视频名和外部产物哈希记录在
+`history/RESULT.md`；不要根据仓库名推断成功或失败，必须以该文件、`summary.tsv` 和视频为准。
 
 ## 内容
 
