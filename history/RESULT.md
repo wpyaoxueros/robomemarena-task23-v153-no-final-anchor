@@ -38,3 +38,13 @@ f8be3d4af25be0d0c5f4ee69a516842eb3ef4bf2289e03b434fa3646a0067c2a  task23/ep0/syn
 4fbad3f6341bdbae383482174fb6c2705b4ab1b8282b7032b36c2d3651b67a29  task23_success_ep0_seed105.mp4
 a529d8d68c1ea149f7a43525a68d48ca1890ed3b8a2bd84794c0822a54d5eec0  task23_success_ep0_seed105_wrist.mp4
 ```
+
+## Attempt 003: 无效 20ep 分片提交
+
+- 目标：5 个 4ep shard 覆盖 seed `105..124`。
+- Slurm jobs：`427793`、`427794`、`427795`、`427796`、`427797`。
+- 根因：`submit_zzhang510.sh` 在 tmux server 中启动内层 `srun` 时没有显式传递
+  `NUM_TRIALS`/`SEED`；tmux 回落到 launcher 默认 `NUM_TRIALS=1, SEED=105`。
+- 结果：前四个 job 各执行同一个 seed105 单 episode，剩余一个 job 已取消；不是 20 个
+  指定 seed 的评测，不能计入 v153 成功率。
+- 修复：后继 v154 只修复该环境传播缺陷，并重新执行完整 20ep。
